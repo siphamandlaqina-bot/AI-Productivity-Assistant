@@ -18,7 +18,47 @@
  * 2. Register it in @theme inline as --color-<name>: var(--<name>)
  */
 
+@theme {
+  --font-display: "Fredoka", sans-serif;
+  --font-body: "Nunito", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --color-page: #f4f3ec;
+  --color-surface: #ffffff;
+  --color-ink: #3a3c46;
+  --color-soft: #86889a;
+  --color-line: #e9e7da;
+  --color-coral: #ff7a6b;
+  --color-coral-soft: #ffcdbd;
+  --color-butter: #ffd673;
+  --color-butter-soft: #fff0c6;
+  --color-mint: #5bd0a0;
+  --color-mint-soft: #c6f0da;
+  --color-powder: #84c7ff;
+  --color-powder-soft: #cde8ff;
+  --color-lilac: #b79cf2;
+  --color-lilac-soft: #e6dbfb;
+  --ease-pop: cubic-bezier(0.34, 1.3, 0.5, 1);
+  --animate-rise: rise 0.6s cubic-bezier(0.34, 1.3, 0.5, 1) both;
+  --animate-blink: blink 1s steps(2, start) infinite;
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
 @theme inline {
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -141,4 +181,69 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-page);
+    color: var(--color-ink);
+  }
+}
+
+.prose-work {
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+.prose-work h2 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.prose-work h2:first-child {
+  margin-top: 0;
+}
+.prose-work h3 {
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+}
+.prose-work p {
+  margin-bottom: 0.75rem;
+}
+.prose-work ul,
+.prose-work ol {
+  margin: 0 0 0.75rem 1.1rem;
+  list-style: disc;
+}
+.prose-work ol {
+  list-style: decimal;
+}
+.prose-work li {
+  margin-bottom: 0.3rem;
+}
+.prose-work strong {
+  font-weight: 700;
+}
+.prose-work table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0.75rem;
+  font-size: 0.8125rem;
+}
+.prose-work th,
+.prose-work td {
+  border: 1px solid var(--color-line);
+  padding: 0.4rem 0.55rem;
+  text-align: left;
+}
+.prose-work th {
+  background: var(--color-page);
+  font-weight: 700;
+}
+.prose-work code {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
 }
